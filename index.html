@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
+    <title>Build your first week of running</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -13,11 +13,56 @@
       </nav>
     </header>
     <main>
-      <h1>COMP4020 prototype</h1>
-      <p data-testid="intro">
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
+      <h1>Build your first week of running</h1>
+      <p>
+        Running looks like one of the cheapest, easiest sports to start: no
+        court, no club, no gear beyond shoes. That's true, but it hides how
+        much there still is to learn about training. Even a beginner's first
+        week already involves decisions — not because running is dangerous,
+        but because going gradually and sustainably takes a plan, not just
+        willpower.
       </p>
+
+      <section aria-labelledby="builder-heading">
+        <h2 id="builder-heading">Build your first week</h2>
+        <form data-testid="plan-form">
+          <div class="field">
+            <label for="distance-input">Distance per run</label>
+            <select id="distance-input" data-testid="distance-input">
+              <option value="2">2 km</option>
+              <option value="3" selected>3 km</option>
+              <option value="5">5 km</option>
+              <option value="8">8 km</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="days-input">Runs per week</label>
+            <select id="days-input" data-testid="days-input">
+              <option value="2">2 days</option>
+              <option value="3" selected>3 days</option>
+              <option value="4">4 days</option>
+              <option value="5">5 days</option>
+              <option value="6">6 days</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="intensity-input">Intensity</label>
+            <select id="intensity-input" data-testid="intensity-input">
+              <option value="easy" selected>Easy — you can hold a conversation</option>
+              <option value="moderate">Moderate — a bit of effort</option>
+              <option value="hard">Hard — pushing the pace</option>
+            </select>
+          </div>
+        </form>
+      </section>
+
+      <section aria-labelledby="plan-heading">
+        <h2 id="plan-heading">Your week</h2>
+        <ul data-testid="weekly-plan"></ul>
+        <p data-testid="summary"></p>
+      </section>
     </main>
     <script type="module" src="./main.ts"></script>
   </body>

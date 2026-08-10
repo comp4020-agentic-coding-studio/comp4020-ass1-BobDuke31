@@ -14,3 +14,20 @@ main {
 a {
   color: #0b5fff;
 }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-block-end: 1rem;
+}
+
+select {
+  font: inherit;
+  padding: 0.4rem;
+  width: fit-content;
+}
+
+[data-testid="weekly-plan"] {
+  padding-inline-start: 1.25rem;
+}
