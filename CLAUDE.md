@@ -152,6 +152,25 @@ means building legibly is part of building well.
 You don't need a name, a student number, or any identity file in the repo: we
 know whose repo it is. Spend the effort on the work.
 
+## Content rules for injury claims
+
+This prototype cites injury-risk research to motivate gradual training (see
+`research/injury-evidence.md` for the sources and full caveats). Three rules
+that apply to any copy, UI text, or content generation on this site:
+
+- **Never convert population rates into personal odds.** Sources like
+  "17.8 injuries per 1000 h of running" are study-population rates, not an
+  individual's probability. Don't write or generate copy like "you have an X%
+  chance of getting injured."
+- **Never claim recreational running generally damages knees.** The cited
+  research is about overuse injuries (tendinopathy, stress syndromes,
+  patellofemoral pain) — a different research question from long-term joint
+  degeneration, which is a separate body of evidence this project doesn't
+  address.
+- **Keep the framing on gradual, sustainable training for beginners**, not on
+  injury risk or fear as the point of the site. Injury evidence exists to
+  motivate a gradual plan, not to be the headline.
+
 ## This file is yours
 
 This CLAUDE.md is a starting point, not a fixed rulebook. As you learn what your
