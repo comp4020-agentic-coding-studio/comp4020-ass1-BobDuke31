@@ -27,7 +27,17 @@ export function initPlanBuilder(doc: Document): void {
     planList.replaceChildren(
       ...plan.days.map((planDay) => {
         const item = doc.createElement("li");
-        item.textContent = planDay.isRunDay ? `${planDay.day}: run ${distanceKm} km` : `${planDay.day}: rest`;
+        item.className = `plan-day ${planDay.isRunDay ? "plan-day-run" : "plan-day-rest"}`;
+
+        const name = doc.createElement("span");
+        name.className = "plan-day-name";
+        name.textContent = planDay.day;
+
+        const detail = doc.createElement("span");
+        detail.className = "plan-day-detail";
+        detail.textContent = ` ${planDay.isRunDay ? `run ${distanceKm} km` : "rest"}`;
+
+        item.append(name, detail);
         return item;
       }),
     );
