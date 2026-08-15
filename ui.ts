@@ -16,6 +16,10 @@ export function initPlanBuilder(doc: Document): void {
   const intensityInput = requireElement<HTMLSelectElement>(doc, '[data-testid="intensity-input"]');
   const planList = requireElement<HTMLUListElement>(doc, '[data-testid="weekly-plan"]');
   const summaryEl = requireElement<HTMLElement>(doc, '[data-testid="summary"]');
+  const statDistance = requireElement<HTMLElement>(doc, '[data-testid="stat-distance"]');
+  const statRunDays = requireElement<HTMLElement>(doc, '[data-testid="stat-run-days"]');
+  const statRestDays = requireElement<HTMLElement>(doc, '[data-testid="stat-rest-days"]');
+  const statEffort = requireElement<HTMLElement>(doc, '[data-testid="stat-effort"]');
 
   function render(): void {
     const distanceKm = Number(distanceInput.value);
@@ -23,6 +27,11 @@ export function initPlanBuilder(doc: Document): void {
     const intensity = intensityInput.value as Intensity;
 
     const plan = buildWeeklyPlan({ distanceKm, daysPerWeek });
+
+    statDistance.textContent = `${plan.totalDistanceKm} km`;
+    statRunDays.textContent = `${plan.runCount}`;
+    statRestDays.textContent = `${plan.days.length - plan.runCount}`;
+    statEffort.textContent = intensity.charAt(0).toUpperCase() + intensity.slice(1);
 
     planList.replaceChildren(
       ...plan.days.map((planDay) => {

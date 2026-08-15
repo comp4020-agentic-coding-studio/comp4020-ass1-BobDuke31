@@ -3,31 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Build your first week of running</title>
+    <title>Just Run?</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header>
       <nav aria-label="Primary">
-        <a href="./">Home</a>
+        <a href="#experiment-heading">Try it</a>
+        <a href="#why-heading">Why it matters</a>
       </nav>
     </header>
     <main>
       <div class="hero">
-        <h1>Build your first week of running</h1>
+        <h1>Just Run?</h1>
         <p class="lede">
-          Running looks like one of the cheapest, easiest sports to start: no
-          court, no club, no gear beyond shoes. That's true, but it hides how
-          much there still is to learn about training. Even a beginner's
-          first week already involves decisions — not because running is
-          dangerous, but because going gradually and sustainably takes a
-          plan, not just willpower.
+          No court, no club, no gear beyond shoes — running looks like the
+          simplest sport there is. Change the variables below and see what
+          "just running" actually adds up to.
         </p>
       </div>
 
-      <section aria-labelledby="builder-heading">
-        <h2 id="builder-heading">Choose distance, days and intensity</h2>
-        <form data-testid="plan-form" class="builder-fields">
+      <section aria-labelledby="experiment-heading" class="experiment">
+        <h2 id="experiment-heading">Set the variables</h2>
+
+        <form data-testid="plan-form" class="variables">
           <div class="field">
             <label for="distance-input">Distance per run</label>
             <select id="distance-input" data-testid="distance-input">
@@ -50,7 +49,7 @@
           </div>
 
           <div class="field">
-            <label for="intensity-input">Intensity</label>
+            <label for="intensity-input">Effort</label>
             <select id="intensity-input" data-testid="intensity-input">
               <option value="easy" selected>Easy — you can hold a conversation</option>
               <option value="moderate">Moderate — a bit of effort</option>
@@ -58,52 +57,53 @@
             </select>
           </div>
         </form>
-      </section>
 
-      <section aria-labelledby="plan-heading" class="reveal">
-        <h2 id="plan-heading">Your week</h2>
-        <ul data-testid="weekly-plan"></ul>
-        <p data-testid="summary"></p>
+        <div class="result">
+          <dl class="stat-row">
+            <div class="stat">
+              <dt>Weekly distance</dt>
+              <dd data-testid="stat-distance"></dd>
+            </div>
+            <div class="stat">
+              <dt>Running days</dt>
+              <dd data-testid="stat-run-days"></dd>
+            </div>
+            <div class="stat">
+              <dt>Recovery days</dt>
+              <dd data-testid="stat-rest-days"></dd>
+            </div>
+            <div class="stat">
+              <dt>Effort</dt>
+              <dd data-testid="stat-effort"></dd>
+            </div>
+          </dl>
+
+          <ul data-testid="weekly-plan" class="week-pattern"></ul>
+
+          <p data-testid="summary" class="reveal-line"></p>
+        </div>
       </section>
 
       <section aria-labelledby="why-heading" class="evidence">
-        <h2 id="why-heading">Why go gradually</h2>
-        <div class="evidence-grid">
-          <article class="evidence-card">
-            <p class="evidence-stat">~2×</p>
-            <h3>Novices get hurt more often</h3>
-            <p>
-              New runners are injured roughly twice as often, per hour of
-              running, as people who've been running for a while — a rate
-              averaged across study populations, not a personal prediction.
-              It's part of why building up gradually is worth taking
-              seriously.
-            </p>
-          </article>
-          <article class="evidence-card">
-            <h3>Overuse injuries, not joint damage</h3>
-            <p>
-              The knee, lower leg and ankle/foot are the most commonly
-              affected areas — but these are overwhelmingly overuse
-              conditions like shin splints and tendinopathy, not evidence
-              that running wears down healthy joints long-term. That's a
-              separate question this plan doesn't try to answer.
-            </p>
-          </article>
-          <article class="evidence-card">
-            <h3>Built for gradual progress</h3>
-            <p>
-              How fast weekly running volume increases shows an association
-              with injury risk in the research, though that evidence is
-              rated low-quality and meant to be treated cautiously rather
-              than as a firm rule. Recognised programmes like the NHS's
-              Couch to 5K increase running time slowly, add a rest day
-              between every run, and treat warm-up and cool-down as
-              standard — the plan above spreads rest the same way once you
-              choose how many days to run.
-            </p>
-          </article>
+        <h2 id="why-heading">Why it matters</h2>
+        <div class="evidence-stat-block">
+          <p class="evidence-figure">~2×</p>
+          <p class="evidence-figure-label">
+            the injury rate for novice runners, per hour spent running,
+            compared with people who've been running for a while — a study-
+            population rate, not a personal prediction.
+          </p>
         </div>
+        <p class="evidence-copy">
+          Most of that risk sits at the knee, lower leg and ankle — overuse
+          injuries like shin splints and tendinopathy, not evidence that
+          running wears down healthy joints long-term. How fast weekly
+          running volume increases is linked to that risk in the research,
+          though the evidence is rated low-quality. It lines up with
+          recognised programmes like the NHS's Couch to 5K: build up slowly,
+          rest between runs, warm up and cool down — the same shape as the
+          pattern above once you set how many days to run.
+        </p>
       </section>
     </main>
     <script type="module" src="./main.ts"></script>
