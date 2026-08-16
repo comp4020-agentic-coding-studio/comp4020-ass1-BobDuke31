@@ -1,83 +1,23 @@
 # Process overview
 
-<!-- TEMPLATE: this file is a shape to fill in, not a form. Replace everything
-     in it with your own overview, and delete this comment — `pnpm
-     check:evidence` will remind you if it's still here. -->
-
-A reading-guide to how the work came together --- a map to your process, not an
-essay about it. Markers read this file and follow its citations; they don't
-trawl the repo for evidence you didn't point at, so if a moment mattered, cite
-it.
-
-This file is the shape; the course site's
-[assessment page](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#what-you-submit)
-is the requirement, and each brief adds its own word count and moment count.
-
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+I built 'Just Run?', a small interactive explainer about beginner running. The main idea is that running looks simple to start, but even 'just running' involves decisions about distance, frequency, intensity and recovery. The user changes those three variables and immediately sees how they affect weekly distance, running days, recovery days and the Monday to Sunday pattern. I kept the project deliberately small: one main idea, one interaction, and a small amount of research evidence to explain why gradual training matters.
 
 ## The moments that mattered
 
-Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
-list short so each moment has room to do all four jobs:
+### 1. Starting with a small working prototype
 
-1. **what happened** --- the problem, or the thing the agent got wrong
-2. **what you did instead of the obvious thing** --- the call you made, and why
-   it beat the obvious one
-3. **how you knew it was right** --- the check you ran, the viewport you looked
-   at, what you read before accepting the diff
-4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
-   that went from red to green, a prompt paired with the commit it produced
+I wanted to avoid making the project too large before I knew whether the main idea worked. Instead of asking Claude to build a polished full page immediately, I narrowed the topic and first built the smallest useful interaction: distance, days per week and intensity changing a weekly result. That became the first working prototype in [`d325f79`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/d325f79). I accepted this version because the interaction worked and the automated checks passed. More importantly, having a real prototype made it easier to judge what the project was actually communicating before spending time on visual design.
 
-Jobs 2 and 3 are the ones the repo can't tell a reader on its own, so they're
-where the marks are. The strongest moments are the ones where a correction
-landed in the **harness** rather than in another prompt --- a rule added to
-`CLAUDE.md`, a check wired up, an attempt thrown away: re-prompting until it
-passes is the routine case, and changing what the agent works against is the
-skilled one.
+### 2. Turning research into a standing rule
 
-Cite each moment as a link whose text is the commit hash or range and whose
-target is this repo's commit or compare URL, so a reader clicks straight to the
-evidence:
+Once the prototype existed, I did more focused research before adding health and injury claims. Commit [`bb9ddb5`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/bb9ddb5) added the research note and showed that some claims needed careful wording, especially population-level injury rates and claims about knee damage. Instead of repeatedly reminding Claude in later prompts, I added these limits to `CLAUDE.md` in [`afea802`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/afea802). This was more useful than another one-off correction because the rule stayed in the project harness. I could see it working when the later page copy kept the population-rate warning and avoided turning the evidence into personal injury predictions ([`2086675`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/2086675)).
 
-- one commit: [`a1b2c3d`](https://github.com/YOUR-ORG/YOUR-REPO/commit/a1b2c3d)
-- a range:
-  [`a1b2c3d...e4f5a6b`](https://github.com/YOUR-ORG/YOUR-REPO/compare/a1b2c3d...e4f5a6b)
+### 3. Realising the page explained the wrong thing
 
-To pair a prompt with the commit it produced, quote the prompt (curated, not a
-full transcript) next to the citation:
+The early versions worked technically, but after looking at the page I realised it felt too much like a beginner running-plan generator. That was not the point of the assignment. Instead of adding more features, I kept the same mechanic and changed how it was presented. In [`3eba985`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/3eba985), the page was redesigned as an editorial interactive explainer. The controls became adjustable variables, the results became the visual focus, and the evidence was simplified. The same tests still passed, so I knew the redesign had changed the explanation without breaking the underlying interaction.
 
-> the prompt, verbatim
+### 4. Checking the marked viewport instead of assuming it worked
 
-Screenshots are welcome where one carries the verification better than a
-sentence does. Commit the file to this repo and link it with a **relative**
-path, which is what makes it render on GitHub: `![alt text](docs/before.png)`.
-Images don't count towards the word count and don't replace the citation.
-
-### A worked moment, for shape
-
-Delete this section along with the rest of the boilerplate --- it's here to show
-the four jobs in one paragraph, not to be imitated in content.
-
-> The date formatter kept coming back with `toLocaleDateString()` and no locale
-> argument, so the same build rendered differently on my machine and in CI. I'd
-> already re-prompted it twice, which fixed the line but not the habit, so the
-> third time I put the rule in `CLAUDE.md` instead
-> ([`3f9ac21`](https://github.com/YOUR-ORG/YOUR-REPO/commit/3f9ac21)) and added
-> a spec test that fails on a bare `toLocaleDateString`. That's what told me it
-> had actually taken: the test went red against the old code and green against
-> the new, and the next two features it wrote passed it without prompting
-> ([`3f9ac21...b7e0d14`](https://github.com/YOUR-ORG/YOUR-REPO/compare/3f9ac21...b7e0d14)).
-
-## Before you ship
-
-`pnpm check:evidence` verifies your citations resolve to real commits, that the
-current reflection entry is in `reflections/`, and that your `CLAUDE.md` is
-there --- before a marker ever opens the file. It checks that your map is
-traceable, not that it is good: the marker judges whether your small,
-deliberately chosen set of moments shows real judgement and reflection. A green
-check is not a substitute for that curation.
-
-Images are deliberately not checked, because whether one renders is visible the
-moment you look. Open this file on GitHub and look at it before you ship.
+During the final responsive review, the long intensity option was identified as a possible overflow problem at the 390px phone width used for marking. Rather than redesigning the layout again, I made a small CSS fix in [`a898b56`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass1-BobDuke31/commit/a898b56) so the field could shrink correctly. I then ran `pnpm check` again and all 26 tests, typechecking, build and lint checks passed. This reminded me that automated tests were useful, but they did not replace checking the actual layout constraints in the brief.
